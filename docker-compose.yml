@@ -47,6 +47,7 @@ services:
         context: nifi/
     volumes:
       - ./data/:/data:rw
+      - ./nifi/templates:/opt/nifi/nifi-1.4.0/conf/templates:rw
     ports:
         - "8080:8080"
     networks:
