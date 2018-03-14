@@ -1,3 +1,24 @@
+# NS specific setup
+
+1. Setup Docker Toolbox or Docker Machine depending on your laptop setup
+2. Download kaggle enron dataset zip (https://www.kaggle.com/wcukierski/enron-email-dataset/data) and copy into ./data
+3. Run: docker-compose up -d
+4. Nifi will be located at: http://192.168.99.100:8080/nifi/ (The IP may be different based off of the hosting OS)
+5. Kibana is at http://192.168.99.100:5601
+6. Once Nifi is up and running you should have an existing template called ElasticIngestBasic
+    Drag that template onto the canvas
+    Go to the PutElasticSearchHttp processor properties and add the password: changeme
+7. Enable all processors. It should now read the zipfile in, break it into records and upload them to Elasticsearch for Kibana magic
+
+TODO:
+Parse out the message data to include all the metadata fields
+Automatically setup the Nifi data flow
+Integrate the data directly into Nifi. If not local then REST call to data source?
+Add clustering for larger datasets
+
+
+
+
 # Docker ELK stack
 
 [![Join the chat at https://gitter.im/deviantony/docker-elk](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/deviantony/docker-elk?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
