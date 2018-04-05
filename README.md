@@ -1,25 +1,20 @@
-# NS specific setup
+# nifi-docker-elk setup
 
+This is a proof of concept to extend the docker-elk project to include Apache Nifi as the datasource to provide an operational data pipeline.
+It was also created to demonstrate the record-oriented data processing in Apache Nifi
+
+Quickstart
 1. Setup Docker Toolbox or Docker Machine depending on your laptop setup
-2. Download kaggle enron dataset zip (https://www.kaggle.com/wcukierski/enron-email-dataset/data) and copy into ./data
-3. Run: docker-compose up -d
-4. Nifi will be located at: http://192.168.99.100:8080/nifi/ (The IP may be different based off of the hosting OS)
-5. Kibana is at http://192.168.99.100:5601
-6. Once Nifi is up and running you should have an existing template called ElasticIngestBasic
-    Drag that template onto the canvas
-    Go to the PutElasticSearchHttp processor properties and add the password: changeme
-7. Enable all processors. It should now read the zipfile in, break it into records and upload them to Elasticsearch for Kibana magic
-
-TODO:
-Parse out the message data to include all the metadata fields
-Automatically setup the Nifi data flow
-Integrate the data directly into Nifi. If not local then REST call to data source?
-Add clustering for larger datasets
+2. Run: docker-compose up -d
+3. Nifi will be located at: http://192.168.99.100:8080/nifi/ 
+4. Kibana is at http://192.168.99.100:5601
+5. It should now read the zipfile in, break it into records and upload them to Elasticsearch for Kibana magic
+6. Navigate to Kibana, your index should already be created and data will be indexed automatically through Nifi
 
 
 
 
-# Docker ELK stack
+# Docker ELK stack background
 
 [![Join the chat at https://gitter.im/deviantony/docker-elk](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/deviantony/docker-elk?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Elastic Stack version](https://img.shields.io/badge/ELK-6.2.1-blue.svg?style=flat)](https://github.com/deviantony/docker-elk/issues/245)
